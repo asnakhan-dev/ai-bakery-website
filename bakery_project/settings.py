@@ -30,6 +30,11 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = ['*']
 
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://ai-bakery-website-1.onrender.com",
+    "https://ai-bakery-website.onrender.com",
+]
+
 # Application definition
 
 INSTALLED_APPS = [

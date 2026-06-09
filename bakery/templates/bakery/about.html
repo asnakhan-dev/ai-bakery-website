@@ -1,0 +1,254 @@
+{% extends 'bakery/base.html' %}
+
+{% block title %}About Us - Artisan Bakery Pune{% endblock %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section with Background Image -->
+<section style="background: url('{% static "bakery/images/about_us.jpg" %}') center/cover; padding: 8rem 2rem; position: relative; overflow: hidden;">
+    <!-- Dark Brown Overlay -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(44, 24, 16, 0.95) 0%, rgba(139, 90, 60, 0.85) 100%);"></div>
+    
+    <!-- Animated Background Pattern -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.05; background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    
+    <!-- Gradient Orbs -->
+    <div style="position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%); filter: blur(80px); animation: pulse 8s ease-in-out infinite;"></div>
+    <div style="position: absolute; bottom: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212, 163, 115, 0.2) 0%, transparent 70%); filter: blur(80px); animation: pulse 10s ease-in-out infinite 2s;"></div>
+    
+    <div class="container" style="position: relative; z-index: 1; text-align: center;">
+        <!-- Badge -->
+        <div style="display: inline-flex; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); color: white; padding: 1rem 2rem; border-radius: 50px; font-weight: 600; margin-bottom: 2rem; border: 2px solid rgba(255, 255, 255, 0.3); animation: fadeInDown 1s ease;">
+            <span style="font-size: 1.8rem;">🏆</span>
+            <span style="font-size: 1.1rem;">Pune's Most Trusted Bakery Since 1995</span>
+        </div>
+        
+        <!-- Main Heading -->
+        <h1 style="font-size: 5.5rem; color: white; margin-bottom: 1.5rem; font-weight: 900; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); animation: fadeInUp 1s ease; line-height: 1.1;">
+            Our 
+            <span style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Story</span>
+        </h1>
+        
+        <!-- Subheading -->
+        <p style="font-size: 1.6rem; color: rgba(255, 255, 255, 0.9); max-width: 800px; margin: 0 auto 3rem; line-height: 1.6; text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); animation: fadeInUp 1s ease 0.2s; animation-fill-mode: both;">
+            From a small family recipe book to Pune's favorite bakery - A journey of passion, quality, and delicious moments
+        </p>
+        
+        <!-- Timeline Stats -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto; animation: fadeInUp 1s ease 0.4s; animation-fill-mode: both;">
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 255, 255, 0.2);">
+                <div style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">1995</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600; font-size: 1.1rem;">Founded in Pune</div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 255, 255, 0.2);">
+                <div style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">30+</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600; font-size: 1.1rem;">Years of Excellence</div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 255, 255, 0.2);">
+                <div style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">5000+</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600; font-size: 1.1rem;">Happy Families</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.1); opacity: 0.5; }
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+
+
+<!-- Our Story -->
+<section class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div>
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" alt="Our Bakery in Pune" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-lg);">
+        </div>
+        <div>
+            <h2 style="font-size: 2.5rem; color: var(--dark); margin-bottom: 1.5rem;">The Beginning in Pune</h2>
+            <p style="color: var(--secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                Artisan Bakery was founded in 1995 by the Sharma family in the heart of Koregaon Park, Pune. What started as a small home-based bakery with traditional Indian and continental recipes has grown into one of Pune's most beloved bakeries.
+            </p>
+            <p style="color: var(--secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                Mr. Rajesh Sharma and Mrs. Priya Sharma, with their passion for baking and commitment to quality, built Artisan Bakery from the ground up. Using recipes passed down through generations combined with modern baking techniques, they created the perfect balance of tradition and innovation.
+            </p>
+            <p style="color: var(--secondary); line-height: 1.8;">
+                Today, we're proud to serve thousands of happy customers across Pune, employing local talent and sourcing ingredients from Maharashtra's finest farms. We've become more than just a bakery – we're a part of Pune's food culture.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values -->
+<section class="container" style="margin-top: 4rem;">
+    <div class="section-title">
+        <h2>Our Core Values</h2>
+        <p>What makes us Pune's favorite bakery</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+        <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); text-align: center;">
+            <div style="width: 80px; height: 80px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem;">
+                🌾
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 1rem; font-size: 1.5rem;">Premium Ingredients</h3>
+            <p style="color: var(--secondary); line-height: 1.8;">We use only the finest organic flour, fresh dairy from local Maharashtra farms, and premium ingredients in all our products.</p>
+        </div>
+        
+        <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); text-align: center;">
+            <div style="width: 80px; height: 80px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem;">
+                👨‍🍳
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 1rem; font-size: 1.5rem;">Expert Indian Bakers</h3>
+            <p style="color: var(--secondary); line-height: 1.8;">Our master bakers from Pune and across India bring decades of experience and passion to every loaf, cake, and pastry.</p>
+        </div>
+        
+        <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); text-align: center;">
+            <div style="width: 80px; height: 80px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem;">
+                🌍
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 1rem; font-size: 1.5rem;">Eco-Friendly</h3>
+            <p style="color: var(--secondary); line-height: 1.8;">We're committed to sustainable practices, from composting to using renewable energy and supporting local farmers.</p>
+        </div>
+        
+        <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); text-align: center;">
+            <div style="width: 80px; height: 80px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem;">
+                ❤️
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 1rem; font-size: 1.5rem;">Pune Community First</h3>
+            <p style="color: var(--secondary); line-height: 1.8;">We believe in giving back, supporting local schools, NGOs, and community events across Pune and Maharashtra.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="container" style="margin-top: 4rem;">
+    <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>The passionate people behind your favorite treats</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+        <div style="text-align: center;">
+            <div style="width: 200px; height: 200px; border-radius: 50%; background: var(--cream); margin: 0 auto 1.5rem; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400" alt="Priya Sharma" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 0.5rem;">Priya Sharma</h3>
+            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Co-Founder & Head Baker</p>
+            <p style="color: var(--secondary); font-size: 0.95rem;">30+ years of baking experience from Pune</p>
+        </div>
+        
+        <div style="text-align: center;">
+            <div style="width: 200px; height: 200px; border-radius: 50%; background: var(--cream); margin: 0 auto 1.5rem; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="Rajesh Sharma" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 0.5rem;">Rajesh Sharma</h3>
+            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Co-Founder & Operations</p>
+            <p style="color: var(--secondary); font-size: 0.95rem;">Business strategist & community liaison</p>
+        </div>
+        
+        <div style="text-align: center;">
+            <div style="width: 200px; height: 200px; border-radius: 50%; background: var(--cream); margin: 0 auto 1.5rem; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400" alt="Aisha Khan" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 0.5rem;">Aisha Khan</h3>
+            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Pastry Chef</p>
+            <p style="color: var(--secondary); font-size: 0.95rem;">Specializes in custom cakes & Indian fusion desserts</p>
+        </div>
+        
+        <div style="text-align: center;">
+            <div style="width: 200px; height: 200px; border-radius: 50%; background: var(--cream); margin: 0 auto 1.5rem; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Arjun Patil" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 style="color: var(--dark); margin-bottom: 0.5rem;">Arjun Patil</h3>
+            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Master Baker</p>
+            <p style="color: var(--secondary); font-size: 0.95rem;">Expert in sourdough & artisan breads from Pune</p>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline -->
+<section class="container" style="margin-top: 4rem;">
+    <div class="section-title">
+        <h2>Our Journey in Pune</h2>
+        <p>Milestones in our bakery's history</p>
+    </div>
+    
+    <div style="max-width: 800px; margin: 3rem auto;">
+        <div style="border-left: 3px solid var(--primary); padding-left: 2rem; position: relative;">
+            <div style="margin-bottom: 3rem; position: relative;">
+                <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; border-radius: 50%; background: var(--primary);"></div>
+                <h4 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem;">1995</h4>
+                <h5 style="color: var(--dark); font-size: 1.2rem; margin-bottom: 0.5rem;">The Beginning</h5>
+                <p style="color: var(--secondary);">Rajesh and Priya open their first small bakery in Koregaon Park, Pune with just 500 sq ft space.</p>
+            </div>
+            
+            <div style="margin-bottom: 3rem; position: relative;">
+                <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; border-radius: 50%; background: var(--primary);"></div>
+                <h4 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem;">2005</h4>
+                <h5 style="color: var(--dark); font-size: 1.2rem; margin-bottom: 0.5rem;">Expansion in Pune</h5>
+                <p style="color: var(--secondary);">Moved to our current 2000 sq ft location in Koregaon Park with a larger kitchen and seating area.</p>
+            </div>
+            
+            <div style="margin-bottom: 3rem; position: relative;">
+                <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; border-radius: 50%; background: var(--primary);"></div>
+                <h4 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem;">2015</h4>
+                <h5 style="color: var(--dark); font-size: 1.2rem; margin-bottom: 0.5rem;">Award Winning</h5>
+                <p style="color: var(--secondary);">Received "Best Bakery in Maharashtra" award from the Indian Baking Association.</p>
+            </div>
+            
+            <div style="position: relative;">
+                <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; border-radius: 50%; background: var(--primary);"></div>
+                <h4 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem;">2026</h4>
+                <h5 style="color: var(--dark); font-size: 1.2rem; margin-bottom: 0.5rem;">Going Digital</h5>
+                <p style="color: var(--secondary);">Launched our online ordering platform to serve Pune better with home delivery!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="container" style="margin-top: 4rem;">
+    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 4rem; border-radius: 30px; text-align: center; color: white;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Visit Us in Pune!</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">Come experience the warmth of our bakery in Koregaon Park and taste the difference that passion makes.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{% url 'products' %}" class="btn" style="background: white; color: var(--primary);">Browse Products</a>
+            <a href="{% url 'contact' %}" class="btn btn-secondary" style="border-color: white; color: white;">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (max-width: 968px) {
+        section > div[style*="grid-template-columns: 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+{% endblock %}

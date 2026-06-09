@@ -1,0 +1,262 @@
+{% extends 'bakery/base.html' %}
+
+{% block title %}Order Confirmation - Artisan Bakery{% endblock %}
+
+{% block content %}
+<!-- Success Section -->
+<section style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 4rem 2rem; text-align: center; color: white;">
+    <div class="container">
+        <div style="width: 100px; height: 100px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; animation: scaleIn 0.5s ease;">
+            <i class="fas fa-check" style="font-size: 3rem; color: #10b981;"></i>
+        </div>
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; color: white;">Order Confirmed!</h1>
+        <p style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 1rem;">Thank you for your order, {{ order.customer_name }}!</p>
+        <p style="font-size: 1.1rem; opacity: 0.9;">Order #{{ order.id }} has been placed successfully</p>
+    </div>
+</section>
+
+<!-- Order Details -->
+<section class="container" style="margin-top: -3rem;">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <!-- Order Status -->
+        <div style="background: white; padding: 3rem; border-radius: 20px; box-shadow: var(--shadow-lg); margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <div>
+                    <h2 style="color: var(--dark); margin-bottom: 0.5rem; font-size: 2rem;">Order #{{ order.id }}</h2>
+                    <p style="color: var(--secondary);">Placed on {{ order.created_at|date:"F d, Y" }} at {{ order.created_at|time:"g:i A" }}</p>
+                </div>
+                <div style="padding: 1rem 2rem; background: #10b981; color: white; border-radius: 50px; font-weight: 600;">
+                    {% if order.status == 'ready' and order.is_delivery %}
+                        Out for Delivery 🚚
+                    {% elif order.status == 'ready' and not order.is_delivery %}
+                        Ready for Pickup 🏪
+                    {% else %}
+                        {{ order.get_status_display }}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Order Timeline -->
+            <div style="position: relative; padding-left: 3rem; margin: 2rem 0;">
+                <div style="position: absolute; left: 0.75rem; top: 0; bottom: 0; width: 2px; background: var(--cream);"></div>
+                
+                <!-- Step 1: Order Placed - Always green -->
+                <div style="position: relative; margin-bottom: 2rem;">
+                    <div style="position: absolute; left: -2.4rem; width: 24px; height: 24px; background: #10b981; border-radius: 50%; border: 4px solid white;"></div>
+                    <h4 style="color: var(--dark); margin-bottom: 0.25rem;">Order Placed</h4>
+                    <p style="color: var(--secondary); font-size: 0.9rem;">{{ order.created_at|date:"F d, Y" }} at {{ order.created_at|time:"g:i A" }}</p>
+                </div>
+                
+                <!-- Step 2: Order Confirmed -->
+                <div style="position: relative; margin-bottom: 2rem;">
+                    <div style="position: absolute; left: -2.4rem; width: 24px; height: 24px; 
+                        background: {% if order.status == 'confirmed' or order.status == 'preparing' or order.status == 'ready' or order.status == 'completed' %}#10b981{% else %}var(--cream){% endif %}; 
+                        border-radius: 50%; border: 4px solid white;"></div>
+                    <h4 style="color: {% if order.status == 'confirmed' or order.status == 'preparing' or order.status == 'ready' or order.status == 'completed' %}var(--dark){% else %}var(--secondary){% endif %}; margin-bottom: 0.25rem;">
+                        Order Confirmed
+                    </h4>
+                    <p style="color: var(--secondary); font-size: 0.9rem;">
+                        {% if order.status == 'confirmed' or order.status == 'preparing' or order.status == 'ready' or order.status == 'completed' %}
+                            Your order has been confirmed! 
+                        {% else %}
+                            Waiting for confirmation
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <!-- Step 3: Preparing -->
+                <div style="position: relative; margin-bottom: 2rem;">
+                    <div style="position: absolute; left: -2.4rem; width: 24px; height: 24px; 
+                        background: {% if order.status == 'preparing' or order.status == 'ready' or order.status == 'completed' %}#10b981{% else %}var(--cream){% endif %}; 
+                        border-radius: 50%; border: 4px solid white;"></div>
+                    <h4 style="color: {% if order.status == 'preparing' or order.status == 'ready' or order.status == 'completed' %}var(--dark){% else %}var(--secondary){% endif %}; margin-bottom: 0.25rem;">
+                        Preparing Your Order 👨‍🍳
+                    </h4>
+                    <p style="color: var(--secondary); font-size: 0.9rem;">
+                        {% if order.status == 'preparing' or order.status == 'ready' or order.status == 'completed' %}
+                            Our chefs are baking for you! 🍰
+                        {% else %}
+                            Estimated time: 30-45 minutes
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <!-- Step 4: Ready/Out for Delivery -->
+                <div style="position: relative;">
+                    <div style="position: absolute; left: -2.4rem; width: 24px; height: 24px; 
+                        background: {% if order.status == 'ready' or order.status == 'completed' %}#10b981{% else %}var(--cream){% endif %}; 
+                        border-radius: 50%; border: 4px solid white;"></div>
+                    <h4 style="color: {% if order.status == 'ready' or order.status == 'completed' %}var(--dark){% else %}var(--secondary){% endif %}; margin-bottom: 0.25rem;">
+                        {% if order.is_delivery %}
+                            Out for Delivery 
+                        {% else %}
+                            Ready for Pickup 
+                        {% endif %}
+                    </h4>
+                    <p style="color: var(--secondary); font-size: 0.9rem;">
+                        {% if order.status == 'ready' or order.status == 'completed' %}
+                            {% if order.is_delivery %}Your order is on the way! 🎉{% else %}Your order is ready! Please come pick it up! 🎉{% endif %}
+                        {% else %}
+                            We'll notify you when ready
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <!-- Customer Information -->
+            <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: var(--shadow);">
+                <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem;">
+                    <i class="fas fa-user"></i> Customer Details
+                </h3>
+                <div style="margin-bottom: 1rem;">
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Name</p>
+                    <p style="color: var(--dark); font-weight: 600;">{{ order.customer_name }}</p>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Email</p>
+                    <p style="color: var(--dark); font-weight: 600;">{{ order.customer_email }}</p>
+                </div>
+                <div>
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Phone</p>
+                    <p style="color: var(--dark); font-weight: 600;">{{ order.customer_phone }}</p>
+                </div>
+            </div>
+            
+            <!-- Delivery Information -->
+            <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: var(--shadow);">
+                <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem;">
+                    <i class="fas fa-truck"></i> Delivery Details
+                </h3>
+                <div style="margin-bottom: 1rem;">
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Method</p>
+                    <p style="color: var(--dark); font-weight: 600;">
+                        {% if order.is_delivery %}Home Delivery{% else %}Store Pickup{% endif %}
+                    </p>
+                </div>
+                {% if order.is_delivery %}
+                <div>
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Address</p>
+                    <p style="color: var(--dark); font-weight: 600;">{{ order.delivery_address }}</p>
+                </div>
+                {% else %}
+                <div>
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Pickup Location</p>
+                    <p style="color: var(--dark); font-weight: 600;">Koregaon Park, Pune, Maharashtra 411001</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Order Items -->
+        <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 2rem;">
+            <h3 style="color: var(--dark); margin-bottom: 2rem; font-size: 1.5rem;">Order Items</h3>
+            
+            {% for item in order.items.all %}
+            <div style="display: grid; grid-template-columns: 80px 1fr auto auto; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--cream); align-items: center;">
+                <div style="width: 80px; height: 80px; border-radius: 10px; overflow: hidden; background: var(--cream);">
+                    {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    {% endif %}
+                </div>
+                <div>
+                    <h4 style="color: var(--dark); margin-bottom: 0.5rem;">{{ item.product.name }}</h4>
+                    <p style="color: var(--secondary); font-size: 0.9rem;">{{ item.product.category.name }}</p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Quantity</p>
+                    <p style="color: var(--dark); font-weight: 600; font-size: 1.1rem;">{{ item.quantity }}</p>
+                </div>
+                <div style="text-align: right;">
+                    <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 0.25rem;">Price</p>
+                    <p style="color: var(--primary); font-weight: 700; font-size: 1.3rem;">₹{{ item.get_total }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <!-- Order Total -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--cream); border-radius: 10px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                    <span style="color: var(--secondary);">Subtotal</span>
+                    <span style="color: var(--dark); font-weight: 600;">₹{{ order.total_amount }}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                    <span style="color: var(--secondary);">Tax (8%)</span>
+                    <span style="color: var(--dark); font-weight: 600;">${% widthratio order.total_amount 1 0.08 %}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 2px solid white;">
+                    <span style="color: var(--dark); font-weight: 700; font-size: 1.3rem;">Total</span>
+                    <span style="color: var(--primary); font-weight: 700; font-size: 1.8rem;">₹{{ order.total_amount }}</span>
+                </div>
+            </div>
+        </div>
+        
+        {% if order.special_instructions %}
+        <!-- Special Instructions -->
+        <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 2rem;">
+            <h3 style="color: var(--dark); margin-bottom: 1rem; font-size: 1.5rem;">
+                <i class="fas fa-comment-dots"></i> Special Instructions
+            </h3>
+            <p style="color: var(--secondary); line-height: 1.8;">{{ order.special_instructions }}</p>
+        </div>
+        {% endif %}
+        
+        <!-- Actions -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+            <a href="{% url 'products' %}" class="btn btn-secondary" style="text-align:center;padding:1.2rem;">
+                <i class="fas fa-shopping-bag"></i> Continue Shopping
+            </a>
+            
+            <a href="{% url 'home' %}" class="btn btn-primary" style="text-align:center;padding:1.2rem;">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- What's Next -->
+<section class="container" style="margin-top: 4rem;">
+    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 3rem; border-radius: 30px; text-align: center; color: white;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">What Happens Next?</h2>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <div style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📧</div>
+                <h4 style="margin-bottom: 0.5rem; color: white;">Confirmation Email</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem;">You'll receive an email confirmation at {{ order.customer_email }}</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍🍳</div>
+                <h4 style="margin-bottom: 0.5rem; color: white;">We Start Baking</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem;">Our bakers will prepare your fresh order with care</p>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+                <h4 style="margin-bottom: 0.5rem; color: white;">Ready to Enjoy</h4>
+                <p style="opacity: 0.9; font-size: 0.95rem;">We'll notify you when your order is ready</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes scaleIn {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+    
+    @media (max-width: 968px) {
+        section > div > div[style*="grid-template-columns: 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+        }
+        
+        div[style*="grid-template-columns: repeat(3, 1fr)"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,7 @@
+Django==6.0.1
+groq
+twilio
+Pillow
+gunicorn
+whitenoise
+python-dotenv

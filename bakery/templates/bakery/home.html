@@ -1,0 +1,489 @@
+{% extends 'bakery/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<!-- Hero Section with Image Carousel -->
+<section class="hero" style="background: linear-gradient(135deg, #2c1810 0%, #8b5a3c 100%); padding: 0; position: relative; overflow: hidden; min-height: 90vh; display: flex; align-items: center;">
+    
+    <!-- Gradient Overlay -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(212, 163, 115, 0.1) 0%, rgba(139, 90, 60, 0.2) 100%);"></div>
+    
+    <div class="hero-content" style="max-width: 1400px; margin: 0 auto; padding: 6rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1;">
+        <div class="hero-text" style="animation: slideInLeft 1s ease;">
+            <!-- Badge -->
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; margin-bottom: 2rem; border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+                <span style="font-size: 1.5rem;">✨</span>
+                <span>Since 1995 - Pune's #1 Bakery</span>
+            </div>
+            
+            <!-- Main Heading -->
+            <h1 style="font-size: 5rem; line-height: 1.1; color: white; margin-bottom: 1.5rem; font-weight: 900; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);">
+                Freshly Baked 
+                <span style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block;">Goodness</span>
+                Every Day
+            </h1>
+            
+            <!-- Subheading -->
+            <p style="font-size: 1.4rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 3rem; line-height: 1.8; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">
+                Experience authentic flavors from Pune's finest bakery. Handcrafted with love using premium ingredients.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                <a href="{% url 'products' %}" class="btn" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #2c1810; padding: 1.5rem 3.5rem; font-size: 1.2rem; font-weight: 700; box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4); border: none; transition: all 0.3s; text-decoration: none; border-radius: 50px; display: inline-flex; align-items: center; gap: 0.75rem;"
+                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 50px rgba(255, 215, 0, 0.6)'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 40px rgba(255, 215, 0, 0.4)'">
+                    <i class="fas fa-shopping-bag"></i> Order Now
+                </a>
+                <a href="{% url 'about' %}" class="btn" style="background: transparent; color: white; padding: 1.5rem 3.5rem; font-size: 1.2rem; font-weight: 700; border: 3px solid white; transition: all 0.3s; text-decoration: none; border-radius: 50px; display: inline-flex; align-items: center; gap: 0.75rem;"
+                   onmouseover="this.style.background='white'; this.style.color='#2c1810'"
+                   onmouseout="this.style.background='transparent'; this.style.color='white'">
+                    <i class="fas fa-book-open"></i> Our Story
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 2rem 0; border-top: 2px solid rgba(255, 255, 255, 0.2);">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">5000+</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-weight: 500; font-size: 1.1rem;">Happy Customers</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">50+</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-weight: 500; font-size: 1.1rem;">Products</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem;">30+</div>
+                    <div style="color: rgba(255, 255, 255, 0.8); font-weight: 500; font-size: 1.1rem;">Years in Pune</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Carousel -->
+        <div class="hero-carousel" style="position: relative; animation: slideInRight 1s ease;">
+            <!-- Decorative Circle -->
+            <div style="position: absolute; top: -30px; right: -30px; width: 500px; height: 500px; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); border-radius: 50%; opacity: 0.2; filter: blur(80px);"></div>
+            
+            <!-- Carousel Container -->
+            <div style="position: relative; z-index: 1;">
+                <div class="carousel-wrapper" style="position: relative; overflow: hidden; border-radius: 30px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);">
+                    <!-- Carousel Slides -->
+                    <div class="carousel-slides" style="display: flex; transition: transform 0.5s ease-in-out;">
+                        <!-- Slide 1 - Replace with your image path -->
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="{% static 'bakery/images/home01.png' %}" alt="Bakery Image 1" style="width: 100%; height: 600px; object-fit: cover; display: block;">
+                        </div>
+                        
+                        <!-- Slide 2 - Replace with your image path -->
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="{% static 'bakery/images/home02.png' %}" alt="Bakery Image 2" style="width: 100%; height: 600px; object-fit: cover; display: block;">
+                        </div>
+                        
+                        <!-- Slide 3 - Replace with your image path -->
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="{% static 'bakery/images/home03.png' %}" alt="Bakery Image 3" style="width: 100%; height: 600px; object-fit: cover; display: block;">
+                        </div>
+                        
+                        <!-- Slide 4 - Replace with your image path -->
+                        <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                            <img src="{% static 'bakery/images/home04.png' %}" alt="Bakery Image 4" style="width: 100%; height: 600px; object-fit: cover; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-prev" onclick="moveSlide(-1)" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.5); color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s; z-index: 10;"
+                            onmouseover="this.style.background='rgba(255, 255, 255, 0.5)'"
+                            onmouseout="this.style.background='rgba(255, 255, 255, 0.3)'">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <button class="carousel-next" onclick="moveSlide(1)" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.5); color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s; z-index: 10;"
+                            onmouseover="this.style.background='rgba(255, 255, 255, 0.5)'"
+                            onmouseout="this.style.background='rgba(255, 255, 255, 0.3)'">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators" style="display: flex; justify-content: center; gap: 0.75rem; margin-top: 2rem; position: relative; z-index: 10;">
+                    <button class="indicator active" onclick="goToSlide(0)" style="width: 15px; height: 15px; border-radius: 50%; background: white; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);"></button>
+                    <button class="indicator" onclick="goToSlide(1)" style="width: 15px; height: 15px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); border: none; cursor: pointer; transition: all 0.3s;"></button>
+                    <button class="indicator" onclick="goToSlide(2)" style="width: 15px; height: 15px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); border: none; cursor: pointer; transition: all 0.3s;"></button>
+                    <button class="indicator" onclick="goToSlide(3)" style="width: 15px; height: 15px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); border: none; cursor: pointer; transition: all 0.3s;"></button>
+                </div>
+                
+                <!-- Floating Badge -->
+                <div style="position: absolute; bottom: -30px; left: -30px; background: white; padding: 2rem 2.5rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); z-index: 2; animation: floatBadge 3s ease-in-out infinite;">
+                    <div style="display: flex; align-items: center; gap: 1.5rem;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);">
+                            <i class="fas fa-award" style="color: white;"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 800; color: var(--dark); font-size: 1.3rem; margin-bottom: 0.25rem;">Best Quality</div>
+                            <div style="color: var(--secondary); font-size: 1rem;">100% Fresh & Organic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes floatBadge {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+    }
+    
+    .indicator.active {
+        background: white !important;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3) !important;
+        transform: scale(1.2);
+    }
+    
+    @media (max-width: 968px) {
+        .hero-content {
+            grid-template-columns: 1fr !important;
+            padding: 4rem 2rem !important;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem !important;
+        }
+        
+        .carousel-slide img {
+            height: 400px !important;
+        }
+    }
+</style>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
+    
+    function updateCarousel() {
+        const slidesContainer = document.querySelector('.carousel-slides');
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            if (index === currentSlide) {
+                indicator.classList.add('active');
+                indicator.style.background = 'white';
+                indicator.style.boxShadow = '0 4px 10px rgba(255, 255, 255, 0.3)';
+                indicator.style.transform = 'scale(1.2)';
+            } else {
+                indicator.classList.remove('active');
+                indicator.style.background = 'rgba(255, 255, 255, 0.4)';
+                indicator.style.boxShadow = 'none';
+                indicator.style.transform = 'scale(1)';
+            }
+        });
+    }
+    
+    function moveSlide(direction) {
+        currentSlide += direction;
+        
+        if (currentSlide < 0) {
+            currentSlide = totalSlides - 1;
+        } else if (currentSlide >= totalSlides) {
+            currentSlide = 0;
+        }
+        
+        updateCarousel();
+    }
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+    
+    // Auto-play carousel every 4 seconds
+    setInterval(() => {
+        moveSlide(1);
+    }, 4000);
+</script>
+
+
+<!-- Features Section -->
+<section class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin: 4rem 0;">
+        <div class="feature-card" style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 25px; box-shadow: var(--shadow); transition: all 0.4s; cursor: pointer;"
+             onmouseenter="this.style.transform='translateY(-15px)'; this.style.boxShadow='var(--shadow-lg)'"
+             onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+            <div style="width: 90px; height: 90px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); margin: 0 auto 1.5rem; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3);">🥖</div>
+            <h3 style="margin-bottom: 1rem; color: var(--dark); font-size: 1.5rem;">Fresh Daily</h3>
+            <p style="color: var(--secondary); line-height: 1.7;">All our products are baked fresh every morning using traditional Indian and international recipes</p>
+        </div>
+        
+        <div class="feature-card" style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 25px; box-shadow: var(--shadow); transition: all 0.4s; cursor: pointer;"
+             onmouseenter="this.style.transform='translateY(-15px)'; this.style.boxShadow='var(--shadow-lg)'"
+             onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+            <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); margin: 0 auto 1.5rem; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">🌾</div>
+            <h3 style="margin-bottom: 1rem; color: var(--dark); font-size: 1.5rem;">Premium Ingredients</h3>
+            <p style="color: var(--secondary); line-height: 1.7;">We source only the finest organic ingredients. No preservatives, just pure goodness</p>
+        </div>
+        
+        <div class="feature-card" style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 25px; box-shadow: var(--shadow); transition: all 0.4s; cursor: pointer;"
+             onmouseenter="this.style.transform='translateY(-15px)'; this.style.boxShadow='var(--shadow-lg)'"
+             onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+            <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); margin: 0 auto 1.5rem; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);">👨‍🍳</div>
+            <h3 style="margin-bottom: 1rem; color: var(--dark); font-size: 1.5rem;">Expert Indian Bakers</h3>
+            <p style="color: var(--secondary); line-height: 1.7;">Our master bakers from Pune have 30+ years of combined experience in traditional and modern baking</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="container">
+    <div class="section-title" style="text-align: center; margin-bottom: 4rem;">
+        <h2 style="font-size: 3.5rem; color: var(--dark); margin-bottom: 1rem;">Featured Products</h2>
+        <p style="font-size: 1.2rem; color: var(--secondary); max-width: 600px; margin: 0 auto;">Discover our most popular items, loved by Pune's food lovers</p>
+    </div>
+    
+    {% if featured_products %}
+    <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 3rem;">
+        {% for product in featured_products %}
+        <div class="product-card animate-on-scroll" style="background: white; border-radius: 25px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.4s; position: relative;">
+            <div style="position: relative; overflow: hidden; height: 280px; background: var(--cream);">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+                {% else %}
+                <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400" alt="{{ product.name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+                {% endif %}
+                <div style="position: absolute; top: 1rem; left: 1rem; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
+                    ⭐ Featured
+                </div>
+            </div>
+            <div style="padding: 2rem;">
+                <span style="display: inline-block; background: var(--cream); color: var(--primary); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.75rem;">{{ product.category.icon }} {{ product.category.name }}</span>
+                <h3 style="color: var(--dark); margin-bottom: 0.75rem; font-size: 1.4rem; font-weight: 600;">{{ product.name }}</h3>
+                <p style="color: var(--secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6;">{{ product.description|truncatewords:15 }}</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 2rem; font-weight: 700; color: var(--primary);">₹{{ product.price }}</span>
+                    <a href="{% url 'product_detail' product.slug %}" class="btn btn-primary" style="padding: 0.875rem 1.75rem;">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="text-align: center; color: var(--secondary); padding: 3rem; background: white; border-radius: 20px;">No featured products available at the moment.</p>
+    {% endif %}
+    
+    <div style="text-align: center; margin-top: 3rem;">
+        <a href="{% url 'products' %}" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1.1rem;">
+            <i class="fas fa-th"></i> View All Products
+        </a>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="container" style="margin: 5rem auto;">
+    <div style="background: linear-gradient(135deg, var(--cream) 0%, var(--light) 100%); padding: 5rem 3rem; border-radius: 35px; box-shadow: var(--shadow-lg);">
+        <div class="section-title" style="text-align: center; margin-bottom: 4rem;">
+            <h2 style="font-size: 3.5rem; color: var(--dark); margin-bottom: 1rem;">Browse by Category</h2>
+            <p style="font-size: 1.2rem; color: var(--secondary);">Explore our wide range of baked goods</p>
+        </div>
+        
+        {% if categories %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem;">
+            {% for category in categories %}
+            <a href="{% url 'products' %}?category={{ category.slug }}" style="text-decoration: none;" class="category-card">
+                <div style="background: white; padding: 2.5rem; border-radius: 20px; text-align: center; transition: all 0.4s; box-shadow: var(--shadow); cursor: pointer; position: relative; overflow: hidden;"
+                     onmouseenter="this.style.transform='translateY(-15px) scale(1.05)'; this.style.boxShadow='var(--shadow-lg)'"
+                     onmouseleave="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='var(--shadow)'">
+                    <div style="font-size: 4rem; margin-bottom: 1rem; transition: transform 0.3s;">{{ category.icon }}</div>
+                    <h4 style="color: var(--dark); margin-bottom: 0.75rem; font-size: 1.3rem; font-weight: 600;">{{ category.name }}</h4>
+                    <p style="color: var(--secondary); font-size: 0.95rem; margin-bottom: 1rem;">{{ category.products.count }} delicious items</p>
+                    <div style="display: inline-block; background: var(--primary); color: white; padding: 0.5rem 1.25rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">
+                        Explore <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Customer Reviews -->
+{% if recent_reviews %}
+<section class="container">
+    <div class="section-title" style="text-align: center; margin-bottom: 4rem;">
+        <h2 style="font-size: 3.5rem; color: var(--dark); margin-bottom: 1rem;">What Pune Says About Us</h2>
+        <p style="font-size: 1.2rem; color: var(--secondary);">Don't just take our word for it</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;">
+        {% for review in recent_reviews %}
+        <div style="background: white; padding: 2.5rem; border-radius: 25px; box-shadow: var(--shadow); transition: all 0.3s; position: relative;"
+             onmouseenter="this.style.transform='translateY(-10px)'; this.style.boxShadow='var(--shadow-lg)'"
+             onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+            <div style="position: absolute; top: 1.5rem; right: 1.5rem; font-size: 4rem; opacity: 0.05;">"</div>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                {% for i in "12345" %}
+                    {% if forloop.counter <= review.rating %}
+                    <i class="fas fa-star" style="color: #fbbf24; font-size: 1.2rem;"></i>
+                    {% else %}
+                    <i class="far fa-star" style="color: #d1d5db; font-size: 1.2rem;"></i>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p style="color: var(--secondary); margin-bottom: 2rem; line-height: 1.8; font-size: 1.05rem;">{{ review.comment|truncatewords:25 }}</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);">
+                    {{ review.customer_name|first }}
+                </div>
+                <div>
+                    <h5 style="color: var(--dark); margin-bottom: 0.25rem; font-size: 1.1rem; font-weight: 600;">{{ review.customer_name }}</h5>
+                    <p style="color: var(--secondary); font-size: 0.9rem;">{{ review.product.name }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Newsletter Section -->
+<section class="container" style="margin: 5rem auto;">
+    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); padding: 5rem 3rem; border-radius: 35px; text-align: center; color: white; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: white; opacity: 0.1; border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: white; opacity: 0.1; border-radius: 50%;"></div>
+        <div style="position: relative; z-index: 1;">
+            <div style="font-size: 4rem; margin-bottom: 1.5rem;">📧</div>
+            <h2 style="font-size: 3rem; margin-bottom: 1rem; color: white;">Stay Updated!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto;">Subscribe to our newsletter for exclusive offers, new products, and special Pune events</p>
+            <form id="newsletterForm" style="max-width: 550px; margin: 0 auto; display: flex; gap: 1rem;">
+                <input type="email" placeholder="Enter your email address" required
+                       style="flex: 1; padding: 1.25rem 1.5rem; border-radius: 50px; border: none; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <button type="submit" class="btn" style="background: white; color: var(--primary); padding: 1.25rem 2.5rem; border-radius: 50px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-25px); }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-on-scroll {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .product-card:hover img {
+        transform: scale(1.1);
+    }
+    
+    .category-card:hover div div {
+        transform: scale(1.2) rotate(10deg);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.product-card, .feature-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const button = this.querySelector('button');
+            const originalText = button.innerHTML;
+            
+            if (email) {
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                    button.style.background = '#10b981';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.style.background = 'white';
+                        button.disabled = false;
+                        this.querySelector('input[type="email"]').value = '';
+                    }, 3000);
+                    
+                    showNotification('Thank you for subscribing!', 'success');
+                }, 1000);
+            }
+        });
+    });
+    
+    function showNotification(message, type) {
+        const existing = document.querySelector('.messages');
+        if (existing) existing.remove();
+        
+        const messagesDiv = document.createElement('div');
+        messagesDiv.className = 'messages';
+        messagesDiv.innerHTML = `
+            <div class="alert alert-${type}">
+                <i class="fas fa-check-circle"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        document.body.appendChild(messagesDiv);
+        
+        setTimeout(() => messagesDiv.remove(), 3000);
+    }
+</script>
+{% endblock %}

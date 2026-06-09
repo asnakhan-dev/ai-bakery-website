@@ -104,7 +104,7 @@ def cart(request):
             pass
     
     # Calculate GST (18% for India) and total
-    tax = subtotal * Decimal('0.18')
+    tax = subtotal * Decimal('0.08')
     total = subtotal + tax
     
     # Get recommended products (not already in cart)

@@ -240,7 +240,7 @@
     
     function updateCarousel() {
         const slidesContainer = document.querySelector('.carousel-slides');
-        slidesContainer.style.transform = `translateX(-₹{currentSlide * 100}%)`;
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
         
         // Update indicators
         indicators.forEach((indicator, index) => {
@@ -526,9 +526,9 @@
         const messagesDiv = document.createElement('div');
         messagesDiv.className = 'messages';
         messagesDiv.innerHTML = `
-            <div class="alert alert-₹{type}">
+            <div class="alert alert-${type}">
                 <i class="fas fa-check-circle"></i>
-                <span>₹{message}</span>
+                <span>${message}</span>
             </div>
         `;
         document.body.appendChild(messagesDiv);

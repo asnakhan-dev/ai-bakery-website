@@ -1108,7 +1108,7 @@
 
     msgs.innerHTML += `
         <div class="user-msg">
-        <div class="bubble">${msg}</div>
+        <div class="bubble">₹{msg}</div>
         </div>`;
     input.value = '';
 
@@ -1135,7 +1135,7 @@
         msgs.innerHTML += `
         <div class="bot-msg">
             <div class="avatar">🍰</div>
-            <div class="bubble">${data.reply}</div>
+            <div class="bubble">₹{data.reply}</div>
         </div>`;
         msgs.scrollTop = msgs.scrollHeight;
     } catch(err){

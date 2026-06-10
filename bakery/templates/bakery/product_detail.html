@@ -58,7 +58,7 @@
             </p>
             
             <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
-                <span style="font-size: 3rem; font-weight: 700; color: var(--primary);">${{ product.price }}</span>
+                <span style="font-size: 3rem; font-weight: 700; color: var(--primary);">₹{{ product.price }}</span>
                 {% if not product.is_available %}
                 <span style="color: #ef4444; font-weight: 600; font-size: 1.2rem;">Out of Stock</span>
                 {% endif %}
@@ -113,7 +113,7 @@
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1.5rem; background: white; border-radius: 15px; box-shadow: var(--shadow);">
                 <div style="text-align: center;">
                     <i class="fas fa-truck" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
-                    <p style="color: var(--secondary); font-size: 0.85rem;">Free Delivery on $50+</p>
+                    <p style="color: var(--secondary); font-size: 0.85rem;">Free Delivery on ₹50+</p>
                 </div>
                 <div style="text-align: center;">
                     <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
@@ -217,7 +217,7 @@
                 <h3 class="product-name">{{ related.name }}</h3>
                 <p class="product-description">{{ related.description|truncatewords:10 }}</p>
                 <div class="product-footer">
-                    <span class="product-price">${{ related.price }}</span>
+                    <span class="product-price">₹{{ related.price }}</span>
                     <a href="{% url 'product_detail' related.slug %}" class="btn btn-primary btn-small">View</a>
                 </div>
             </div>

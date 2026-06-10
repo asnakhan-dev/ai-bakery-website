@@ -144,6 +144,7 @@ BAKER_WHATSAPP_NUMBER = os.getenv("BAKER_WHATSAPP_NUMBER")  # Baker's WhatsApp n
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_TIMEOUT = int(os.getenv('EMAIL_TIMEOUT', 5))
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

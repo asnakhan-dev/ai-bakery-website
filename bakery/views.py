@@ -222,51 +222,57 @@ def checkout(request):
 
         # Email to Customer
         try:
-            send_mail(
-                subject=f'Order #{order.id} Confirmed - Artisan Bakery',
-                message=f'''Hi {order.customer_name}!
-
-Your order #{order.id} has been placed successfully!
-
-Total Amount: Rs.{order.total_amount:.2f}
-Payment Method: {order.payment_method.upper()}
-Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
-
-Track your order:
-https://ai-bakery-website-1.onrender.com/track-order/
-
-Order ID: {order.id}
-Email: {order.customer_email}
-
-Thank you for choosing Artisan Bakery!''',
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[order.customer_email],
-                fail_silently=True,
+            from django.core.mail import get_connection, EmailMessage
+            connection = get_connection(
+                backend='django.core.mail.backends.smtp.EmailBackend',
+                timeout=5
             )
+            email = EmailMessage(
+                subject=f'Order #{order.id} Confirmed - Artisan Bakery',
+                body=f'''Hi {order.customer_name}!
+
+        Your order #{order.id} has been placed successfully!
+
+        Total: Rs.{order.total_amount:.2f}
+        Payment: {order.payment_method.upper()}
+        Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
+
+        Track: https://ai-bakery-website-1.onrender.com/track-order/
+        Order ID: {order.id}
+
+        Thank you for choosing Artisan Bakery!''',
+                from_email=settings.EMAIL_HOST_USER,
+                to=[order.customer_email],
+                connection=connection
+            )
+            email.send(fail_silently=True)
         except Exception as e:
             print(f"Customer email error: {e}")
 
         # Email to Baker
         try:
-            send_mail(
-                subject=f'New Order #{order.id} Received!',
-                message=f'''New Order Alert!
-
-Customer: {order.customer_name}
-Phone: {order.customer_phone}
-Email: {order.customer_email}
-Total: Rs.{order.total_amount:.2f}
-Payment: {order.payment_method.upper()}
-Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
-{"Address: " + order.delivery_address if order.is_delivery else ""}
-Special Instructions: {order.special_instructions or "None"}
-
-Update order status:
-https://ai-bakery-website-1.onrender.com/admin/bakery/order/{order.id}/change/''',
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[settings.BAKERY_OWNER_EMAIL],
-                fail_silently=True,
+            from django.core.mail import get_connection, EmailMessage
+            connection = get_connection(
+                backend='django.core.mail.backends.smtp.EmailBackend',
+                timeout=5
             )
+            email = EmailMessage(
+                subject=f'New Order #{order.id} Received!',
+                body=f'''New Order!
+
+        Customer: {order.customer_name}
+        Phone: {order.customer_phone}
+        Total: Rs.{order.total_amount:.2f}
+        Payment: {order.payment_method.upper()}
+        Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
+        Special Instructions: {order.special_instructions or "None"}
+
+        Update: https://ai-bakery-website-1.onrender.com/admin/bakery/order/{order.id}/change/''',
+                from_email=settings.EMAIL_HOST_USER,
+                to=[settings.BAKERY_OWNER_EMAIL],
+                connection=connection
+            )
+            email.send(fail_silently=True)
         except Exception as e:
             print(f"Baker email error: {e}")
 

@@ -166,18 +166,68 @@
         transform: scale(1.2);
     }
     
-    @media (max-width: 968px) {
+    @media (max-width: 768px) {
+        /* Hero — text upar, carousel neeche */
         .hero-content {
             grid-template-columns: 1fr !important;
-            padding: 4rem 2rem !important;
+            padding: 3rem 1rem !important;
+            gap: 2rem !important;
         }
-        
-        .hero-text h1 {
-            font-size: 3rem !important;
+
+        /* Show carousel on mobile */
+        .hero-carousel {
+            display: block !important;
         }
-        
+
+        /* Carousel image height */
         .carousel-slide img {
-            height: 400px !important;
+            height: 280px !important;
+        }
+
+        /* Hero text */
+        .hero-content .hero-text h1 {
+            font-size: 2.2rem !important;
+            line-height: 1.2 !important;
+        }
+
+        .hero-content .hero-text p {
+            font-size: 1rem !important;
+        }
+
+        /* CTA buttons */
+        .hero-content div[style*="display: flex; gap: 1.5rem"] {
+            flex-direction: column !important;
+            gap: 1rem !important;
+        }
+
+        .hero-content .btn {
+            text-align: center !important;
+            width: 100% !important;
+        }
+
+        /* Stats */
+        .hero-content div[style*="grid-template-columns: repeat(3, 1fr)"] {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.5rem !important;
+        }
+
+        .hero-content div[style*="font-size: 3rem"] {
+            font-size: 1.8rem !important;
+        }
+
+        /* Hide floating badge */
+        div[style*="position: absolute; bottom: -30px"] {
+            display: none !important;
+        }
+
+        /* Carousel border radius */
+        .carousel-wrapper {
+            border-radius: 15px !important;
+        }
+
+        /* Hide decorative blur circles */
+        .hero-carousel > div[style*="position: absolute"] {
+            display: none !important;
         }
     }
 </style>

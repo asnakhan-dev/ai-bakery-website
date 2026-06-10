@@ -220,105 +220,103 @@ def checkout(request):
         
         request.session['cart'] = {}
 
+        # Email to Customer
         try:
-            # ✅ Email to Customer
             send_mail(
-                subject=f'🎉 Order #{order.id} Confirmed - Artisan Bakery',
-                message=f'''
-Hi {order.customer_name}!
+                subject=f'Order #{order.id} Confirmed - Artisan Bakery',
+                message=f'''Hi {order.customer_name}!
 
-Your order #{order.id} has been placed successfully! 🎉
+Your order #{order.id} has been placed successfully!
 
-Order Details:
-━━━━━━━━━━━━━━━━━━━━
-Total Amount: ₹{order.total_amount:.2f}
+Total Amount: Rs.{order.total_amount:.2f}
 Payment Method: {order.payment_method.upper()}
 Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
-━━━━━━━━━━━━━━━━━━━━
 
-Track your order anytime:
-http://127.0.0.1:8000/track-order/
+Track your order:
+https://ai-bakery-website-1.onrender.com/track-order/
 
 Order ID: {order.id}
 Email: {order.customer_email}
 
-Thank you for choosing Artisan Bakery! 🍰
-                ''',
+Thank you for choosing Artisan Bakery!''',
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[order.customer_email],
                 fail_silently=True,
             )
+        except Exception as e:
+            print(f"Customer email error: {e}")
 
-            # ✅ Email to Baker
+        # Email to Baker
+        try:
             send_mail(
-                subject=f'🔔 New Order #{order.id} Received!',
-                message=f'''
-New Order Alert! 🔔
+                subject=f'New Order #{order.id} Received!',
+                message=f'''New Order Alert!
 
 Customer: {order.customer_name}
 Phone: {order.customer_phone}
 Email: {order.customer_email}
-Total: ₹{order.total_amount:.2f}
+Total: Rs.{order.total_amount:.2f}
 Payment: {order.payment_method.upper()}
 Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
 {"Address: " + order.delivery_address if order.is_delivery else ""}
 Special Instructions: {order.special_instructions or "None"}
 
 Update order status:
-http://127.0.0.1:8000/admin/bakery/order/{order.id}/change/
-                ''',
+https://ai-bakery-website-1.onrender.com/admin/bakery/order/{order.id}/change/''',
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[settings.BAKERY_OWNER_EMAIL],
                 fail_silently=True,
             )
+        except Exception as e:
+            print(f"Baker email error: {e}")
 
-            # ✅ WhatsApp to Baker
+        # WhatsApp to Baker
+        try:
             client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
             client.messages.create(
                 from_=settings.TWILIO_WHATSAPP_NUMBER,
                 to=settings.BAKER_WHATSAPP_NUMBER,
-                body=f'''🔔 *New Order Received!*
+                body=f'''New Order #{order.id}!
 
-*Order ID:* #{order.id}
-*Customer:* {order.customer_name}
-*Phone:* {order.customer_phone}
-*Total:* ₹{order.total_amount:.2f}
-*Payment:* {order.payment_method.upper()}
-*Delivery:* {"Home Delivery 🚚" if order.is_delivery else "Store Pickup 🏪"}
-{"*Address:* " + order.delivery_address if order.is_delivery else ""}
-*Special Instructions:* {order.special_instructions or "None"}
+Customer: {order.customer_name}
+Phone: {order.customer_phone}
+Total: Rs.{order.total_amount:.2f}
+Payment: {order.payment_method.upper()}
+Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
+{"Address: " + order.delivery_address if order.is_delivery else ""}
+Special Instructions: {order.special_instructions or "None"}
 
-Update status: http://127.0.0.1:8000/admin/
-                '''
+Update: https://ai-bakery-website-1.onrender.com/admin/'''
             )
+        except Exception as e:
+            print(f"Baker WhatsApp error: {e}")
 
-            # ✅ WhatsApp to Customer
+        # WhatsApp to Customer
+        try:
             phone = order.customer_phone.strip().replace(' ', '').replace('-', '')
             if not phone.startswith('+'):
                 phone = f'+91{phone}'
+            client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
             client.messages.create(
                 from_=settings.TWILIO_WHATSAPP_NUMBER,
                 to=f'whatsapp:{phone}',
-                body=f'''🎉 *Order Confirmed - Artisan Bakery*
+                body=f'''Order Confirmed - Artisan Bakery
 
 Hi {order.customer_name}!
+Your order has been placed successfully!
 
-Your order has been placed successfully! 🍰
-
-*Order ID:* #{order.id}
-*Total:* ₹{order.total_amount:.2f}
-*Payment:* {order.payment_method.upper()}
-*Delivery:* {"Home Delivery 🚚" if order.is_delivery else "Store Pickup 🏪"}
+Order ID: #{order.id}
+Total: Rs.{order.total_amount:.2f}
+Payment: {order.payment_method.upper()}
+Delivery: {"Home Delivery" if order.is_delivery else "Store Pickup"}
 
 Track your order:
-http://127.0.0.1:8000/track-order/
+https://ai-bakery-website-1.onrender.com/track-order/
 
-Thank you for choosing Artisan Bakery! 😊
-                '''
+Thank you!'''
             )
-
         except Exception as e:
-            print(f"Notification error: {e}")
+            print(f"Customer WhatsApp error: {e}")
 
         messages.success(request, f'Order #{order.id} placed successfully!')
         return redirect('order_confirmation', order_id=order.id)

@@ -412,10 +412,10 @@
         const upiId = 'asnakhan238@oksbi';
         const amount = document.getElementById('totalAmount').textContent.replace('₹','').trim();
         const upiLinks = {
-            'phonepe': `phonepe://pay?pa=₹{upiId}&pn=ArtisanBakery&am=₹{amount}&cu=INR`,
-            'gpay': `tez://upi/pay?pa=₹{upiId}&pn=ArtisanBakery&am=₹{amount}&cu=INR`,
-            'paytm': `paytmmp://pay?pa=₹{upiId}&pn=ArtisanBakery&am=₹{amount}&cu=INR`,
-            'bhim': `upi://pay?pa=₹{upiId}&pn=ArtisanBakery&am=₹{amount}&cu=INR`
+            'phonepe': `phonepe://pay?pa=${upiId}&pn=ArtisanBakery&am=${amount}&cu=INR`,
+            'gpay': `tez://upi/pay?pa=${upiId}&pn=ArtisanBakery&am=${amount}&cu=INR`,
+            'paytm': `paytmmp://pay?pa=${upiId}&pn=ArtisanBakery&am=${amount}&cu=INR`,
+            'bhim': `upi://pay?pa=${upiId}&pn=ArtisanBakery&am=${amount}&cu=INR`
         };
         
         // Try to open UPI app
@@ -514,7 +514,7 @@
 
     // Real-time email validation
     document.getElementById('email_input')?.addEventListener('blur', function() {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+₹/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const error = document.getElementById('email_error');
         if (this.value && !emailRegex.test(this.value)) {
             this.style.border = '2px solid #ef4444';
@@ -542,7 +542,7 @@
 
         // Validate phone
         const phone = document.getElementById('phone_input');
-        const phoneRegex = /^[6-9]\d{9}₹/;
+        const phoneRegex = /^[6-9]\d{9}$/;
         if (!phoneRegex.test(phone.value.trim())) {
             isValid = false;
             phone.style.borderColor = '#ef4444';
@@ -552,7 +552,7 @@
 
         // Validate email
         const email = document.getElementById('email_input');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+₹/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email.value.trim())) {
             isValid = false;
             email.style.border = '2px solid #ef4444';
@@ -589,9 +589,9 @@
         toast.innerHTML = `
             <div style="
                 position:fixed;top:20px;right:20px;z-index:99999;
-                background:₹{type === 'error' ? '#fee2e2' : '#d1fae5'};
-                border:2px solid ₹{type === 'error' ? '#fca5a5' : '#6ee7b7'};
-                color:₹{type === 'error' ? '#dc2626' : '#065f46'};
+                background:${type === 'error' ? '#fee2e2' : '#d1fae5'};
+                border:2px solid ${type === 'error' ? '#fca5a5' : '#6ee7b7'};
+                color:${type === 'error' ? '#dc2626' : '#065f46'};
                 padding:1rem 1.5rem;border-radius:12px;
                 box-shadow:0 4px 20px rgba(0,0,0,0.15);
                 font-weight:600;font-size:0.95rem;
@@ -599,8 +599,8 @@
                 animation:slideInRight 0.3s ease;
                 max-width:350px;
             ">
-                <i class="fas fa-₹{type === 'error' ? 'exclamation-circle' : 'check-circle'}" style="font-size:1.2rem;"></i>
-                ₹{message}
+                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}" style="font-size:1.2rem;"></i>
+                ${message}
             </div>
         `;
         document.body.appendChild(toast);
@@ -614,9 +614,9 @@
         const messagesDiv = document.createElement('div');
         messagesDiv.className = 'messages';
         messagesDiv.innerHTML = `
-            <div class="alert alert-₹{type}">
-                <i class="fas fa-₹{type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-                <span>₹{message}</span>
+            <div class="alert alert-${type}">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
             </div>
         `;
         document.body.appendChild(messagesDiv);

@@ -62,6 +62,9 @@ The bakery owner manages the entire store through Django Admin.
 
 ### Order Management Features
 
+![Admin Dashboard](<img width="1535" height="862" alt="Admin_order_panel" src="https://github.com/user-attachments/assets/e92f1e76-9e3e-49f8-a030-9eb4a00d2e57" />
+)
+
 - View and manage all customer orders
 - Update order status in real time
 - Filter orders by status, delivery type, payment method, and date

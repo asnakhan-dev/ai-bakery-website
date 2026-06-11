@@ -1,5 +1,2 @@
 bakery/templates/** linguist-vendored
 media/** linguist-vendored
-*.jpg linguist-vendored
-*.jpeg linguist-vendored
-*.png linguist-vendored

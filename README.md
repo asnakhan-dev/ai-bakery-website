@@ -41,6 +41,67 @@ https://github.com/user-attachments/assets/4e777cfe-fe4b-4c0b-9ee0-fc13669473f0
 
 #### Order Confirmation to Customer
 ![Customer_Email](https://github.com/user-attachments/assets/bf6e8bab-7dcb-42ea-9c1f-981ff409ea5a)
+
+---
+
+## Admin Dashboard
+
+The bakery owner manages the entire store through Django Admin.
+
+### Features
+- Add, edit, and remove products
+- Manage categories
+- View customer orders
+- Update order status (Confirmed → Preparing → Ready → Delivered)
+- Automatic Email notifications on status changes
+- Automatic WhatsApp notifications on status changes
+- View customer reviews
+- View contact form submissions
+
+  ---
+
+### Order Management Features
+
+- View and manage all customer orders
+- Update order status in real time
+- Filter orders by status, delivery type, payment method, and date
+- View customer details and order summaries
+- Manage products and categories
+- View customer reviews
+- Access contact form submissions
+  
+---
+
+### Real-Time Status Workflow
+
+```text
+Order Placed
+      │
+      ▼
+Confirmed
+      │
+      ▼
+Preparing
+      │
+      ▼
+Ready
+      │
+      ▼
+Delivered
+
+### Workflow
+
+Customer places order
+        │
+        ▼
+Django Admin Dashboard
+        │
+        ▼
+Update Order Status
+        │
+        ├──► Email Notification
+        └──► WhatsApp Notification
+
 ---
 
 ## Key Features

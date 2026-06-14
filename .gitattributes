@@ -1,2 +1,4 @@
-bakery/templates/** linguist-vendored
-media/** linguist-vendored
+venv/** linguist-vendored
+*.html linguist-detectable=true
+*.css linguist-detectable=true
+*.js linguist-detectable=true

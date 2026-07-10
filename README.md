@@ -1,5 +1,6 @@
-# Artisan Bakery — AI-Powered Bakery E-Commerce Platform
+# Artisan Bakery
 
+> A production-ready AI-powered bakery e-commerce platform built with Django, Groq, Twilio WhatsApp API, UPI Payments, and Render.
 
 
 https://github.com/user-attachments/assets/4e777cfe-fe4b-4c0b-9ee0-fc13669473f0
@@ -10,9 +11,11 @@ https://github.com/user-attachments/assets/4e777cfe-fe4b-4c0b-9ee0-fc13669473f0
 
 ## Live Demo
 
-**[ai-bakery-website-1.onrender.com](https://ai-bakery-website-1.onrender.com)**
+**Application**
 
-> Note: Free tier on Render — first load may take 30-60 seconds to spin up.
+https://ai-bakery-website-1.onrender.com
+
+> Hosted on Render's free tier. The initial request may take 30–60 seconds if the service is starting after inactivity.
 
 ---
 
@@ -91,7 +94,7 @@ Ready
       ▼
 Delivered
 
-### Workflow
+### Order Processing Workflow
 
 Customer places order
         │
@@ -145,6 +148,36 @@ Update Order Status
 - All secrets managed via environment variables (never hardcoded)
 
 ---
+
+## System Architecture
+
+```text
+                  Customer
+                      │
+                      ▼
+          HTML • CSS • JavaScript
+                      │
+                      ▼
+               Django Backend
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+ AI Chatbot      Order System     Admin Dashboard
+      │               │                │
+      ▼               ▼                ▼
+ Groq API      SQLite Database   Order Management
+      │               │                │
+      └───────┬───────┴────────────────┘
+              ▼
+   Email & WhatsApp Notifications
+              │
+              ▼
+           Customer
+```
+
+---
+
 
 ## Tech Stack
 
@@ -315,7 +348,7 @@ Deployed on **Render Free Tier**:
 
 ---
 
-## What I Learned Building This
+## Engineering Challenges
 
 - Integrating LLM APIs (Groq) into a Django backend
 - Twilio WhatsApp Business API for real-time notifications
@@ -326,22 +359,21 @@ Deployed on **Render Free Tier**:
 
 ---
 
-## Developer
-
-**Asna Khan**
-B.Tech Graduate | Python Developer | AI Application Developer
-Pune, India
-
-- GitHub: [github.com/asnakhan-dev](https://github.com/asnakhan-dev)
-- Live Project: [ai-bakery-website-1.onrender.com](https://ai-bakery-website-1.onrender.com)
-
 ---
 
-## License
+<div align="center">
 
-Copyright © 2026 Asna Khan.
+Built with Django · Groq · Twilio · Render
 
-All Rights Reserved.
+<br>
 
-This project is provided for portfolio and demonstration purposes only.
-No part of this code may be copied, modified, distributed, or used without explicit written permission from the author.
+**Portfolio Project**
+
+This repository is intended for portfolio and educational demonstration purposes only. The source code may not be copied, redistributed, or submitted as your own work without the author's permission.
+
+<br>
+
+© 2026 Asna Khan. All rights reserved.
+
+</div>
+

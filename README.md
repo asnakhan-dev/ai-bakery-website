@@ -6,9 +6,6 @@
 https://github.com/user-attachments/assets/4e777cfe-fe4b-4c0b-9ee0-fc13669473f0
 
 
-
-> A production-ready, full-stack bakery e-commerce platform with an AI-powered chatbot, real-time order tracking, UPI payment integration, and automated WhatsApp + Email notifications — built and deployed by a fresher in under 2 weeks.
-
 ## Live Demo
 
 **Application**
@@ -93,6 +90,7 @@ Ready
       │
       ▼
 Delivered
+c
 
 ### Order Processing Workflow
 
@@ -106,7 +104,7 @@ Update Order Status
         │
         ├──► Email Notification
         └──► WhatsApp Notification
-
+```
 ---
 
 ## Key Features
@@ -151,29 +149,27 @@ Update Order Status
 
 ## System Architecture
 
-```text
-                  Customer
-                      │
-                      ▼
-          HTML • CSS • JavaScript
-                      │
-                      ▼
+```text             Customer
+                        │
+                        ▼
+        HTML • CSS • JavaScript (Frontend)
+                        │
+                        ▼
                Django Backend
-                      │
-      ┌───────────────┼────────────────┐
-      │               │                │
-      ▼               ▼                ▼
- AI Chatbot      Order System     Admin Dashboard
-      │               │                │
-      ▼               ▼                ▼
- Groq API      SQLite Database   Order Management
-      │               │                │
-      └───────┬───────┴────────────────┘
-              ▼
-   Email & WhatsApp Notifications
-              │
-              ▼
-           Customer
+                        │
+      ┌─────────────────┼─────────────────┐
+      ▼                 ▼                 ▼
+ AI Chatbot       Order Management   Admin Dashboard
+      │                 │                 │
+      ▼                 ▼                 ▼
+ Groq API        SQLite Database   Order Processing
+      │                 │
+      └────────────┬────┘
+                   ▼
+      Email & WhatsApp Notifications
+                   │
+                   ▼
+                Customer
 ```
 
 ---
@@ -356,8 +352,6 @@ Deployed on **Render Free Tier**:
 - Debugging Gunicorn worker timeouts in production
 - Django Admin customization with signal-based notifications
 - Mobile-responsive CSS without a framework
-
----
 
 ---
 

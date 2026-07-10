@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.conf import settings
 import json
 from groq import Groq
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     featured_products = Product.objects.filter(is_featured=True, is_available=True)[:6]
@@ -369,6 +370,7 @@ def track_order(request):
     context = {'order': order}
     return render(request, 'bakery/track_order.html', context)
 
+@csrf_exempt
 def ai_chat(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -384,7 +386,7 @@ def ai_chat(request):
         client = Groq(api_key=settings.GROQ_API_KEY)
         
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=[
                 {
                     "role": "system",

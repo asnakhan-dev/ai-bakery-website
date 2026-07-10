@@ -109,7 +109,7 @@ Update Order Status
 ## Key Features
 
 ### AI Integration
-- **Groq API + LLaMA 3.3 70B** — Conversational AI bakery assistant
+- **Groq API + LLaMA 4 Scout 17B** — Conversational AI bakery assistant
 - Context-aware — knows your entire product menu in real time
 - Animated chef UI with quick-action buttons
 - Handles product recommendations, ingredient queries, birthday suggestions
@@ -152,7 +152,7 @@ Update Order Status
 |-------|-----------|
 | Backend | Django 6.0 (Python 3.11) |
 | Frontend | HTML5, CSS3, Vanilla JavaScript |
-| AI / LLM | Groq API — LLaMA 3.3 70B Versatile |
+| AI / LLM | Groq API — LLaMA 4 Scout 17B |
 | Notifications | Twilio WhatsApp API + Django SMTP (Gmail) |
 | Payment | UPI Deep Links + Dynamic QR Code |
 | Database | SQLite (dev) |
@@ -296,7 +296,7 @@ Customer places order
 
 ## AI Chatbot Details
 
-- **Model:** LLaMA 3.3 70B Versatile (via Groq API)
+- **Model:** LLaMA 4 Scout 17B (via Groq API)
 - **Context:** Entire product menu injected into system prompt at runtime
 - **UI:** Floating animated chef widget with typing indicator
 - **Quick Actions:** Cakes, Cookies, Birthday suggestions, Budget options

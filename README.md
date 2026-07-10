@@ -1,4 +1,8 @@
 # Artisan Bakery
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-purple?style=for-the-badge)](https://ai-bakery-website-1.onrender.com)
+[![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)](https://python.org)
+[![Django](https://img.shields.io/badge/Django-6.0-green?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
+[![Groq](https://img.shields.io/badge/Groq-Llama%204%20Scout%2017B-orange?style=for-the-badge)](https://groq.com)
 
 > A production-ready AI-powered bakery e-commerce platform built with Django, Groq, Twilio WhatsApp API, UPI Payments, and Render.
 

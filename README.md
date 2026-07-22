@@ -94,7 +94,7 @@ Ready
       │
       ▼
 Delivered
-c
+
 
 ### Order Processing Workflow
 

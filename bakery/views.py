@@ -386,7 +386,7 @@ def ai_chat(request):
         client = Groq(api_key=settings.GROQ_API_KEY)
         
         response = client.chat.completions.create(
-            model="meta-llama/llama-4-scout-17b-16e-instruct",
+            model="openai/gpt-oss-120b",
             messages=[
                 {
                     "role": "system",
